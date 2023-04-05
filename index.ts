@@ -5,6 +5,7 @@ import localize from './src/init/localize';
 import db from './src/init/db';
 import theApp from './src/init/theApp';
 import { connected } from './src/helpers/interval';
+import bodyParser from 'body-parser';
 
 const app: Express = express();
 
@@ -31,7 +32,11 @@ const corsOptions = {
   origin: '*',
 };
 
+app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.urlencoded({limit: "1mb", extended: true, parameterLimit:5000}));
+app.use(bodyParser.text({ limit: '5mb' }));
 app.use(cors(corsOptions));
+
 theApp(app);
 localize(app);
 db();

@@ -21,7 +21,7 @@ export const Routes = {
   addFriend : '/addFriend',
   removeFriend : '/removeFriend',
   currentUserInfo : '/currentUserInfo',
-  addProfileImage : '/addProfileImage',
+  updateProfileChanges : '/updateProfileChanges',
 
   messages:'/messages'
 };

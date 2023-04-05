@@ -7,14 +7,14 @@ const saltRounds = 10;
 
 
 
-const addProfileImage = async (req: Request | any, res: Response) => {
+const updateProfileChanges = async (req: Request | any, res: Response) => {
   try {
-    const { userId , image } = req.body;
+    const { userId , image , name , mobile , email } = req.body;
 
         User.findOne({ _id: userId }).then(( result ) => {
          User.updateOne(
           { _id: result.id }, 
-          { profileImage : image }).then(() => {
+          { profileImage : image , name : name , email : email , mobile : mobile}).then(() => {
          User.findOne({ _id: userId }).then(( response ) => { 
           res.status(200).send( response );
         }); 
@@ -25,13 +25,6 @@ const addProfileImage = async (req: Request | any, res: Response) => {
         return console.log(res, err);
    }
   }
-
-
-
-
-
-
-
 
 
 
@@ -128,4 +121,4 @@ const UsersList = async (req: Request | any, res: Response) => {
 };
 
 
-export { UserUpdate, UsersList , AddFriend , currentUserInfo , removeFriend , addProfileImage };
+export { UserUpdate, UsersList , AddFriend , currentUserInfo , removeFriend , updateProfileChanges };
