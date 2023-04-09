@@ -2,7 +2,6 @@
   "name": "small-business-backend",
   "version": "1.0.0",
   "main": "index.ts",
-  "type": "module",
   "scripts": {
     "start": "npx nodemon",
     "swagger-autogen": "node swagger.js",
