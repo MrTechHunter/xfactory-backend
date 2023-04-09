@@ -10,4 +10,7 @@ router.post(Routes.addFriend, userController.AddFriend);
 router.post(Routes.removeFriend, userController.removeFriend);
 router.post(Routes.currentUserInfo, userController.currentUserInfo);
 
+router.post(Routes.updateProfileChanges, userController.updateProfileChanges);
+
+
 export default router;

@@ -5,7 +5,7 @@ import localize from './src/init/localize';
 import db from './src/init/db';
 import theApp from './src/init/theApp';
 import { connected } from './src/helpers/interval';
-import { GlobalMessages } from './src/mvc/models';
+import bodyParser from 'body-parser';
 
 const app: Express = express();
 
@@ -32,14 +32,19 @@ const corsOptions = {
   origin: '*',
 };
 
+app.use(bodyParser.json({limit: '0.5mb'}));
+app.use(bodyParser.urlencoded({limit: "0.5mb", extended: true, parameterLimit:5000}));
+app.use(bodyParser.text({ limit: '0.5mb' }));
+
 app.use(cors(corsOptions));
+
 theApp(app);
 localize(app);
 db();
 routes(app);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Game Server World!')
 })
 
 io.on( 'connection', connected );
